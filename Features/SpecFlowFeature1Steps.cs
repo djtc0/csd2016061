@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace Features
@@ -8,27 +6,27 @@ namespace Features
     [Binding]
     public class SpecFlowFeature1Steps
     {
-        private Calculator calculator = new Calculator();
+        private readonly Calculator _calculator = new Calculator();
 
         [Given(@"I have entered (.*) into the calculator")]
         
         public void GivenIHaveEnteredIntoTheCalculator(int p0)
         {
             //ScenarioContext.Current.Pending();
-            calculator.values.Add(p0);
+            _calculator.values.Add(p0);
         }
         
         [When(@"I press add")]
         public void WhenIPressAdd()
         {
-             calculator.sumAllValues();
+             _calculator.sumAllValues();
         }
         
         [Then(@"the result should be (.*) on the screen")]
         public void ThenTheResultShouldBeOnTheScreen(int p0)
         {
             //ScenarioContext.Current.Pending();
-            Assert.AreEqual(calculator.result, p0);
+            Assert.AreEqual(_calculator.result, p0);
         }
     }
 }
